@@ -20,10 +20,10 @@ class MAXCA_Block(nn.Module):  #input shape: n, c, h, w, d
         super().__init__()
         
         self.xca_block = MultiAxisXCA(region_size=region_size, num_heads=num_heads,
-                                        num_channels=num_channels, input_proj_factor=input_proj_factor, 
-                                        dropout_rate=dropout_rate, use_bias=use_bias, use_checkpoint=use_checkpoint)
+                                      num_channels=num_channels, input_proj_factor=input_proj_factor, 
+                                      dropout_rate=dropout_rate, use_bias=use_bias, use_checkpoint=use_checkpoint)
         self.channel_attention = RCAB(num_channels=num_channels, reduction=channels_reduction, lrelu_slope=lrelu_slope, 
-                                        use_bias=use_bias, use_checkpoint=use_checkpoint)
+                                      use_bias=use_bias, use_checkpoint=use_checkpoint)
     
     def forward(self, x_in):
         
