@@ -12,7 +12,11 @@ from torch.distributions.normal import Normal
 
 class MAXCA_Block(nn.Module):  #input shape: n, c, h, w, d
    
-    def __init__(self, num_channels, num_heads, region_size, use_checkpoint=False):
+    def __init__(self, 
+                 num_channels: int, 
+                 num_heads: int, 
+                 region_size: list=(8,8,8), 
+                 use_checkpoint: bool=False):
         super().__init__()
         
         self.xca_block = MultiAxisXCA(region_size=region_size, num_heads=num_heads,
